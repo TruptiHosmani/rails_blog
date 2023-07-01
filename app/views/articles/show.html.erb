@@ -1,0 +1,30 @@
+<div class="container mx-auto">
+    <div class="mt-10 grid grid-cols-1 sm:grid-cols-6">
+        <div class="sm:col-span-4 sm:col-start-1">
+            <div class="text-xl font-bold">
+                <%= @article.title %>
+            </div>
+        </div>
+        <div class="sm:col-span-1">
+            <%= link_to "Edit", edit_article_path(@article), class: "px-4 py-1 my-5 text-sm text-blue-600 font-semibold rounded-full border border-blue-200 hover:text-white hover:bg-blue-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2"%>
+
+            <%= link_to "Destroy", article_path(@article), class: "px-4 py-1 my-5 text-sm text-blue-600 font-semibold rounded-full border border-blue-200 hover:text-white hover:bg-blue-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2", data: {
+                                turbo_method: :delete,
+                                turbo_confirm: "Are you sure?"
+                            } %>
+        </div>
+    </div>
+    <div class="ps-2 px-5 py-5 my-5 border">
+        <%= @article.body %>
+    </div>
+
+    <div class="ps-2 px-5 py-5 my-5 border">
+        <div class="text-l font-bold">Comments</div>
+        <%= render @article.comments %>
+    </div>
+
+    <div class="ps-2 px-5 py-5 my-5 border">
+        <div class="text-l font-bold">Add a comment:</div>
+        <%= render 'comments/form' %>
+    </div>
+</div>

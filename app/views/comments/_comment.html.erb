@@ -1,0 +1,15 @@
+<% unless comment.archived? %>
+    <div class="my-5">
+        <p><%= comment.body %> by <strong><%= comment.commenter %></strong>
+        </p>
+
+        <p>
+        <%= link_to "Destroy Comment", [comment.article, comment], data: {
+                  turbo_method: :delete,
+                  turbo_confirm: "Are you sure?"
+                } %>
+        </p>
+    </div>
+    <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+
+<% end %>
